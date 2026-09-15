@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#05060a" />
+    <title>Projects · Agentix Console</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- ============ Sidebar ============ -->
+      <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <div class="sidebar-top">
+          <button class="workspace" type="button">
+            <span class="workspace-mark" aria-hidden="true">A</span>
+            <span class="workspace-meta">
+              <span class="workspace-name">Agentix <span class="badge badge--outline">Beta</span></span>
+              <span class="workspace-sub">agent-demo · free plan</span>
+            </span>
+            <svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+
+        <nav class="nav">
+          <p class="nav-label">Workspace</p>
+          <a class="nav-item" href="/dashboard.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+            Overview
+          </a>
+          <a class="nav-item" href="/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg>
+            Notes
+            <span class="nav-count" id="nav-notes-count">0</span>
+          </a>
+          <a class="nav-item is-active" href="/projects.html" aria-current="page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            Projects
+          </a>
+
+          <p class="nav-label">Platform</p>
+          <span class="nav-item is-disabled" title="Coming soon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+            Agents
+            <span class="badge badge--outline">Soon</span>
+          </span>
+          <span class="nav-item is-disabled" title="Coming soon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 11-12h-7l1-8z"/></svg>
+            Automations
+            <span class="badge badge--outline">Soon</span>
+          </span>
+
+          <p class="nav-label">Manage</p>
+          <span class="nav-item is-disabled" title="Coming soon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20V10M12 20V4M18 20v-6"/></svg>
+            Usage &amp; cost
+            <span class="badge badge--outline">Soon</span>
+          </span>
+          <span class="nav-item is-disabled" title="Coming soon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg>
+            Settings
+            <span class="badge badge--outline">Soon</span>
+          </span>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="callout">
+            <span class="callout-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </span>
+            <div>
+              <p class="callout-title">Spec Kit ready</p>
+              <p class="callout-text">Run <span class="mono">/speckit-specify</span> to draft your next feature spec.</p>
+            </div>
+          </div>
+          <div class="user-row">
+            <span class="avatar" aria-hidden="true">AD</span>
+            <div>
+              <p class="user-name">agent-demo</p>
+              <p class="user-role">Workspace owner</p>
+            </div>
+            <button class="btn-icon btn-icon--bare" type="button" aria-label="Workspace menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="12" r="0.5"/><circle cx="12" cy="12" r="0.5"/><circle cx="19" cy="12" r="0.5"/></svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <div class="scrim" id="scrim"></div>
+
+      <!-- ============ Main column ============ -->
+      <div class="main-col">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="btn-icon nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+            </button>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <span class="crumb-parent">Agentix</span>
+              <svg class="crumb-parent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              <span class="crumb-parent">Workspace</span>
+              <svg class="crumb-parent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              <span class="crumb-current" aria-current="page">Projects</span>
+            </nav>
+          </div>
+          <div class="topbar-right">
+            <span class="badge badge--success" id="api-pill">
+              <span class="badge-dot"></span>
+              <span id="api-pill-text">Checking…</span>
+            </span>
+            <button class="btn-icon has-dot" type="button" aria-label="Notifications">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </button>
+            <button class="btn-icon" type="button" aria-label="Help">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.6-3 4"/><path d="M12 17.5h.01"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <main class="content">
+          <div class="page-head">
+            <div>
+              <p class="eyebrow page-eyebrow">Spec Kit workflow · GitHub-native</p>
+              <h1 class="page-title">Projects</h1>
+              <p class="page-sub">
+                Connected and simulated repositories for the <span class="mono">agent-demo</span> workspace.
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="/console.js"></script>
+  </body>
+</html>

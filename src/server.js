@@ -40,6 +40,7 @@ function readRequestBody(req) {
 
 const PAGE_ALIASES = {
   "/dashboard": "/dashboard.html",
+  "/projects": "/projects.html",
 };
 
 function serveStatic(req, res, pathname) {
