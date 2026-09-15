@@ -6,7 +6,7 @@ for spec-driven development.
 ## Quick start
 
 ```bash
-npm start          # http://localhost:3000 (override with PORT / HOST)
+npm start          # http://localhost:3003 (override with PORT / HOST)
 npm run dev        # same, with --watch restart on file changes
 ```
 
@@ -30,6 +30,31 @@ public/            static frontend (index.html, styles.css, app.js)
 src/server.js      HTTP server: static files + JSON API
 src/notes.js       in-memory notes store
 ```
+
+### Console pages
+
+The frontend is an Agentix-branded dark console (see **Design system** below):
+
+| Route          | Page                                                                 |
+| -------------- | -------------------------------------------------------------------- |
+| `/`            | **Notes** — capture form, stat cards, note stream, storage budget    |
+| `/dashboard`   | **Overview** — endpoint health probes, runtime telemetry, activity   |
+
+### UI agent
+
+`.github/agents/ui.agent.md` defines **ui**, a frontend-focused Copilot
+custom agent. Any task that creates pages, restyles components, or reviews
+visual changes can be delegated to it (e.g. `@ui build the settings page`).
+It is hard-wired to the design-system skill below and to this repo's
+zero-dependency stack.
+
+### Design system
+
+`skills/agentix-design-system/` packages the Agentix / SpecOps visual
+identity (dark navy surfaces, violet→indigo accent, reserved status
+colors, card-based layouts) as rules plus token/component/layout reference
+files. `public/styles.css` implements those tokens as plain CSS custom
+properties — no build step, no frameworks.
 
 ## GitHub Spec Kit
 

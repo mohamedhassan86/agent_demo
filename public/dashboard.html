@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#05060a" />
-    <title>Notes · Agentix Console</title>
+    <title>Overview · Agentix Console</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,11 +31,11 @@
 
         <nav class="nav">
           <p class="nav-label">Workspace</p>
-          <a class="nav-item" href="/dashboard.html">
+          <a class="nav-item is-active" href="/dashboard.html" aria-current="page">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
             Overview
           </a>
-          <a class="nav-item is-active" href="/" aria-current="page">
+          <a class="nav-item" href="/">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg>
             Notes
             <span class="nav-count" id="nav-notes-count">0</span>
@@ -103,15 +103,10 @@
               <svg class="crumb-parent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
               <span class="crumb-parent">Workspace</span>
               <svg class="crumb-parent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-              <span class="crumb-current" aria-current="page">Notes</span>
+              <span class="crumb-current" aria-current="page">Overview</span>
             </nav>
           </div>
           <div class="topbar-right">
-            <label class="search-pill">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-              <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes" />
-              <kbd class="kbd">/</kbd>
-            </label>
             <span class="badge badge--success" id="api-pill">
               <span class="badge-dot"></span>
               <span id="api-pill-text">Checking…</span>
@@ -129,188 +124,207 @@
           <!-- Page header -->
           <div class="page-head">
             <div>
-              <p class="eyebrow page-eyebrow">Spec Kit workflow · Workspace</p>
-              <h1 class="page-title">Notes</h1>
+              <p class="eyebrow page-eyebrow">Spec Kit workflow · GitHub-native</p>
+              <h1 class="page-title">Overview</h1>
               <p class="page-sub">
-                Captured context for the <span class="mono">agent-demo</span> workspace — held in server memory, newest first, reset on restart.
+                Live status of the <span class="mono">agent-demo</span> service: endpoint probes, runtime telemetry, and the workspace note stream.
               </p>
             </div>
             <div class="page-actions">
-              <button class="btn btn--secondary" id="refresh-btn" type="button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.5 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.65 4.36A9 9 0 0 0 20.5 15"/></svg>
-                Refresh
-              </button>
-              <button class="btn btn--primary" id="new-note-btn" type="button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-                New note
-              </button>
+              <a class="btn btn--secondary" href="/">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg>
+                Open notes
+              </a>
+              <button class="btn btn--primary" id="run-checks" type="button">Run health checks</button>
             </div>
           </div>
 
           <!-- Stat cards -->
-          <section class="stat-row" aria-label="Workspace statistics">
+          <section class="stat-row" aria-label="Service statistics">
             <article class="stat-card">
               <div class="stat-top">
-                <p class="stat-label">Total notes</p>
+                <p class="stat-label">API status</p>
+                <span class="stat-chip" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-12h-7l1-8z"/></svg>
+                </span>
+              </div>
+              <p class="stat-value stat-value--text" id="stat-status">Checking…</p>
+              <p class="stat-caption" id="stat-status-caption">probing /api/health</p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top">
+                <p class="stat-label">Process uptime</p>
+                <span class="stat-chip" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                </span>
+              </div>
+              <p class="stat-value stat-value--text" id="stat-uptime">—</p>
+              <p class="stat-caption">since last restart</p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top">
+                <p class="stat-label">Notes in store</p>
                 <span class="stat-chip" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg>
                 </span>
               </div>
-              <p class="stat-value" id="stat-total">0</p>
-              <p class="stat-caption">in-memory store · newest first</p>
+              <p class="stat-value" id="stat-notes">0</p>
+              <p class="stat-caption">probe notes excluded</p>
             </article>
             <article class="stat-card">
               <div class="stat-top">
                 <p class="stat-label">Captured today</p>
                 <span class="stat-chip" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 8L9 4l-3 8H2"/></svg>
                 </span>
               </div>
               <p class="stat-value" id="stat-today">0</p>
               <p class="stat-caption">since 00:00 local time</p>
-            </article>
-            <article class="stat-card">
-              <div class="stat-top">
-                <p class="stat-label">Storage used</p>
-                <span class="stat-chip" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
-                </span>
-              </div>
-              <p class="stat-value" id="stat-storage">0 B</p>
-              <p class="stat-caption">of 64 KiB workspace budget</p>
-            </article>
-            <article class="stat-card">
-              <div class="stat-top">
-                <p class="stat-label">Last activity</p>
-                <span class="stat-chip" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 8L9 4l-3 8H2"/></svg>
-                </span>
-              </div>
-              <p class="stat-value stat-value--text" id="stat-activity">—</p>
-              <p class="stat-caption">latest capture or deletion</p>
             </article>
           </section>
 
           <!-- Two-column content -->
           <div class="content-grid">
             <div class="col-main">
-              <!-- Composer -->
-              <section class="panel" aria-label="Capture a note">
-                <header class="panel-head panel-head--tight">
-                  <span class="panel-chip" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                  </span>
-                  <div class="panel-head-copy">
-                    <h2 class="panel-title">Capture</h2>
-                    <p class="panel-sub">New notes append to the store via <span class="mono">POST /api/notes</span> and render newest-first.</p>
-                  </div>
-                </header>
-                <form id="note-form" autocomplete="off" class="form-row">
-                  <input
-                    id="note-input"
-                    class="input"
-                    type="text"
-                    placeholder="Write a note — e.g. “wire the billing page to the usage API”"
-                    maxlength="200"
-                    required
-                  />
-                  <button class="btn btn--primary" type="submit">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-                    Add note
-                  </button>
-                </form>
-                <p class="field-hint">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  Notes live in server memory only — no disk persistence, nothing leaves this sandbox.
-                </p>
-              </section>
-
-              <!-- Notes list -->
-              <section class="panel panel--flush" aria-label="All notes">
-                <header class="panel-head">
-                  <span class="panel-chip" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg>
-                  </span>
-                  <div class="panel-head-copy">
-                    <h2 class="panel-title">All notes</h2>
-                    <p class="panel-sub">Everything captured in this workspace, newest first.</p>
-                  </div>
-                  <div class="panel-actions">
-                    <span class="badge" id="notes-count-badge">0 notes</span>
-                  </div>
-                </header>
-
-                <ul class="feed" id="note-list" aria-live="polite"></ul>
-                <div class="empty" id="empty-state">
-                  <p class="empty-title">No notes yet</p>
-                  <p class="empty-body">Capture your first note above — it lands in the in-memory store instantly.</p>
-                </div>
-              </section>
-            </div>
-
-            <!-- Right rail -->
-            <aside class="col-rail" aria-label="Workspace summary">
-              <section class="panel" aria-label="Storage budget">
-                <header class="panel-head panel-head--tight">
-                  <span class="panel-chip" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
-                  </span>
-                  <div class="panel-head-copy">
-                    <h2 class="panel-title">Storage budget</h2>
-                  </div>
-                </header>
-                <div class="progress" role="progressbar" aria-label="Storage used against 64 KiB budget">
-                  <div class="progress-fill" id="storage-fill" style="width: 0%"></div>
-                </div>
-                <p class="progress-label">
-                  <span id="storage-used">0 B used · 64 KiB budget</span>
-                  <span class="mono" id="storage-pct">0.00%</span>
-                </p>
-              </section>
-
-              <section class="panel" aria-label="API status">
-                <header class="panel-head panel-head--tight">
-                  <span class="panel-chip" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-12h-7l1-8z"/></svg>
-                  </span>
-                  <div class="panel-head-copy">
-                    <h2 class="panel-title">API status</h2>
-                  </div>
-                  <div class="panel-actions">
-                    <span class="badge" id="api-status">pending</span>
-                  </div>
-                </header>
-                <div class="kv">
-                  <div class="kv-row">
-                    <span class="kv-label">Endpoint</span>
-                    <code class="kv-value mono">GET /api/health</code>
-                  </div>
-                  <div class="kv-row">
-                    <span class="kv-label">Uptime</span>
-                    <span class="kv-value mono" id="api-uptime">—</span>
-                  </div>
-                  <div class="kv-row">
-                    <span class="kv-label">Probe latency</span>
-                    <span class="kv-value mono" id="api-latency">—</span>
-                  </div>
-                  <div class="kv-row">
-                    <span class="kv-label">Last checked</span>
-                    <span class="kv-value" id="api-checked">—</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="panel panel--flush" aria-label="Session activity">
+              <!-- Endpoint health -->
+              <section class="panel panel--flush" aria-label="Endpoint health">
                 <header class="panel-head">
                   <span class="panel-chip" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 8L9 4l-3 8H2"/></svg>
                   </span>
                   <div class="panel-head-copy">
-                    <h2 class="panel-title">Activity</h2>
-                    <p class="panel-sub">Live store events, newest first.</p>
+                    <h2 class="panel-title">Endpoint health</h2>
+                    <p class="panel-sub">Read-only probes run on load; the full sweep adds one synthetic write/delete transaction.</p>
+                  </div>
+                  <div class="panel-actions">
+                    <span id="checks-summary"></span>
                   </div>
                 </header>
-                <ul class="feed feed--tight" id="activity-feed" aria-live="polite"></ul>
+                <div class="table-wrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Purpose</th>
+                        <th class="num">Latency</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="endpoint-rows"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <!-- Recent notes -->
+              <section class="panel panel--flush" aria-label="Recent notes">
+                <header class="panel-head">
+                  <span class="panel-chip" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg>
+                  </span>
+                  <div class="panel-head-copy">
+                    <h2 class="panel-title">Recent notes</h2>
+                    <p class="panel-sub">The five most recent captures in the workspace store.</p>
+                  </div>
+                  <div class="panel-actions">
+                    <a class="btn btn--secondary btn--sm" href="/">Open notes</a>
+                  </div>
+                </header>
+                <ul class="feed" id="recent-list" aria-live="polite"></ul>
+                <div class="empty" id="recent-empty" hidden>
+                  <p class="empty-title">Nothing captured yet</p>
+                  <p class="empty-body">Notes you create in the workspace appear here in real time.</p>
+                </div>
+              </section>
+            </div>
+
+            <!-- Right rail -->
+            <aside class="col-rail" aria-label="Runtime summary">
+              <section class="panel" aria-label="Runtime">
+                <header class="panel-head panel-head--tight">
+                  <span class="panel-chip" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+                  </span>
+                  <div class="panel-head-copy">
+                    <h2 class="panel-title">Runtime</h2>
+                  </div>
+                </header>
+                <div class="kv">
+                  <div class="kv-row">
+                    <span class="kv-label">Process</span>
+                    <code class="kv-value mono">node src/server.js</code>
+                  </div>
+                  <div class="kv-row">
+                    <span class="kv-label">Uptime</span>
+                    <span class="kv-value mono" id="runtime-uptime">—</span>
+                  </div>
+                  <div class="kv-row">
+                    <span class="kv-label">Probe latency</span>
+                    <span class="kv-value mono" id="runtime-latency">—</span>
+                  </div>
+                  <div class="kv-row">
+                    <span class="kv-label">Origin</span>
+                    <span class="kv-value mono" id="runtime-origin"></span>
+                  </div>
+                  <div class="kv-row">
+                    <span class="kv-label">Last checked</span>
+                    <span class="kv-value" id="runtime-checked">—</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel" aria-label="Spec Kit integration">
+                <header class="panel-head panel-head--tight">
+                  <span class="panel-chip" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>
+                  </span>
+                  <div class="panel-head-copy">
+                    <h2 class="panel-title">Spec Kit</h2>
+                  </div>
+                </header>
+                <div class="kv">
+                  <div class="kv-row">
+                    <span class="kv-label">Integration</span>
+                    <span class="kv-value">GitHub Copilot</span>
+                  </div>
+                  <div class="kv-row">
+                    <span class="kv-label">CLI version</span>
+                    <span class="kv-value mono">1.0.6</span>
+                  </div>
+                  <div class="kv-row">
+                    <span class="kv-label">Skills installed</span>
+                    <span class="kv-value">10 speckit + 1 design system</span>
+                  </div>
+                  <div class="kv-row">
+                    <span class="kv-label">Constitution</span>
+                    <span class="badge badge--warning">Placeholder</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel" aria-label="Security and data posture">
+                <header class="panel-head panel-head--tight">
+                  <span class="panel-chip" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </span>
+                  <div class="panel-head-copy">
+                    <h2 class="panel-title">Security &amp; data</h2>
+                  </div>
+                </header>
+                <ul class="check-list">
+                  <li class="check-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span><strong>In-memory only</strong> — notes are never written to disk.</span>
+                  </li>
+                  <li class="check-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span><strong>Zero dependencies</strong> — Node built-ins only, no supply chain.</span>
+                  </li>
+                  <li class="check-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span><strong>Reset on restart</strong> — state clears whenever the process restarts.</span>
+                  </li>
+                </ul>
               </section>
             </aside>
           </div>
@@ -319,6 +333,9 @@
     </div>
 
     <script src="/console.js"></script>
-    <script src="/app.js"></script>
+    <script src="/dashboard.js"></script>
+    <script>
+      document.getElementById("runtime-origin").textContent = location.host;
+    </script>
   </body>
 </html>
