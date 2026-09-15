@@ -38,7 +38,12 @@ function readRequestBody(req) {
   });
 }
 
+const PAGE_ALIASES = {
+  "/dashboard": "/dashboard.html",
+};
+
 function serveStatic(req, res, pathname) {
+  pathname = PAGE_ALIASES[pathname] || pathname;
   const relativePath = pathname === "/" ? "index.html" : pathname.replace(/^\/+/, "");
   const filePath = path.join(PUBLIC_DIR, relativePath);
 
