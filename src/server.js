@@ -6,6 +6,7 @@ const path = require("node:path");
 
 const notesStore = require("./notes");
 const projectsPage = require("./pages/projects");
+const repositoriesPage = require("./pages/repositories");
 
 const PORT = Number(process.env.PORT) || 3003;
 const HOST = process.env.HOST || "0.0.0.0";
@@ -130,6 +131,11 @@ const server = http.createServer((req, res) => {
 
   if (pathname === "/projects" || pathname === "/projects.html") {
     sendHtml(res, projectsPage.render());
+    return;
+  }
+
+  if (pathname === "/repositories" || pathname === "/repositories.html") {
+    sendHtml(res, repositoriesPage.render());
     return;
   }
 

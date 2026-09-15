@@ -7,7 +7,7 @@ function render() {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#05060a" />
-    <title>Projects · Agentix Console</title>
+    <title>Repositories · Agentix Console</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,11 +42,11 @@ function render() {
             Notes
             <span class="nav-count" id="nav-notes-count">0</span>
           </a>
-          <a class="nav-item is-active" href="/projects" aria-current="page">
+          <a class="nav-item" href="/projects">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
             Projects
           </a>
-          <a class="nav-item" href="/repositories">
+          <a class="nav-item is-active" href="/repositories" aria-current="page">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             Repositories
           </a>
@@ -112,7 +112,7 @@ function render() {
               <svg class="crumb-parent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
               <span class="crumb-parent">Workspace</span>
               <svg class="crumb-parent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-              <span class="crumb-current" aria-current="page">Projects</span>
+              <span class="crumb-current" aria-current="page">Repositories</span>
             </nav>
           </div>
           <div class="topbar-right">
@@ -133,9 +133,9 @@ function render() {
           <div class="page-head">
             <div>
               <p class="eyebrow page-eyebrow">Spec Kit workflow · GitHub-native</p>
-              <h1 class="page-title">Projects</h1>
+              <h1 class="page-title">Repositories</h1>
               <p class="page-sub">
-                Connected and simulated repositories for the <span class="mono">agent-demo</span> workspace.
+                Connected and tracked repositories for the <span class="mono">agent-demo</span> workspace.
               </p>
             </div>
           </div>
