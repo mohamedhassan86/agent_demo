@@ -1,4 +1,7 @@
-<!doctype html>
+"use strict";
+
+function render() {
+  return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -16,7 +19,6 @@
   </head>
   <body>
     <div class="app-shell">
-      <!-- ============ Sidebar ============ -->
       <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
         <div class="sidebar-top">
           <button class="workspace" type="button">
@@ -40,7 +42,7 @@
             Notes
             <span class="nav-count" id="nav-notes-count">0</span>
           </a>
-          <a class="nav-item is-active" href="/projects.html" aria-current="page">
+          <a class="nav-item is-active" href="/projects" aria-current="page">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
             Projects
           </a>
@@ -95,7 +97,6 @@
 
       <div class="scrim" id="scrim"></div>
 
-      <!-- ============ Main column ============ -->
       <div class="main-col">
         <header class="topbar">
           <div class="topbar-left">
@@ -141,3 +142,7 @@
     <script src="/console.js"></script>
   </body>
 </html>
+`;
+}
+
+module.exports = { render };
