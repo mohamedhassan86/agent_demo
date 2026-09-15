@@ -6,7 +6,7 @@ const path = require("node:path");
 
 const notesStore = require("./notes");
 
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT) || 3003;
 const HOST = process.env.HOST || "0.0.0.0";
 const PUBLIC_DIR = path.join(__dirname, "..", "public");
 

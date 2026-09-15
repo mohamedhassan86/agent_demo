@@ -6,7 +6,7 @@ for spec-driven development.
 ## Quick start
 
 ```bash
-npm start          # http://localhost:3000 (override with PORT / HOST)
+npm start          # http://localhost:3003 (override with PORT / HOST)
 npm run dev        # same, with --watch restart on file changes
 ```
 
