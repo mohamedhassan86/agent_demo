@@ -39,6 +39,7 @@ The frontend is an Agentix-branded dark console (see **Design system** below):
 | -------------- | -------------------------------------------------------------------- |
 | `/`            | **Notes** — capture form, stat cards, note stream, storage budget    |
 | `/dashboard`   | **Overview** — endpoint health probes, runtime telemetry, activity   |
+| `/projects`    | **Projects** — Node-rendered console page (empty main content)       |
 
 ### UI agent
 

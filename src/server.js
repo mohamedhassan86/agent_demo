@@ -5,6 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const notesStore = require("./notes");
+const projectsPage = require("./pages/projects");
 
 const PORT = Number(process.env.PORT) || 3003;
 const HOST = process.env.HOST || "0.0.0.0";
@@ -18,6 +19,15 @@ const MIME_TYPES = {
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
 };
+
+function sendHtml(res, html) {
+  res.writeHead(200, {
+    "Content-Type": "text/html; charset=utf-8",
+    "Content-Length": Buffer.byteLength(html),
+    "Cache-Control": "no-store",
+  });
+  res.end(html);
+}
 
 function sendJson(res, statusCode, payload) {
   const body = JSON.stringify(payload);
@@ -115,6 +125,11 @@ const server = http.createServer((req, res) => {
     handleApi(req, res, pathname).catch((error) => {
       sendJson(res, 500, { error: error.message });
     });
+    return;
+  }
+
+  if (pathname === "/projects" || pathname === "/projects.html") {
+    sendHtml(res, projectsPage.render());
     return;
   }
 
